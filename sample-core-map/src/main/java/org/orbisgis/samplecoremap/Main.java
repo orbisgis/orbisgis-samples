@@ -1,28 +1,25 @@
 package org.orbisgis.samplecoremap;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.Properties;
 import org.h2.util.OsgiDataSourceFactory;
 import org.h2gis.h2spatialext.CreateSpatialExtension;
 import org.h2gis.utilities.JDBCUrlParser;
 import org.h2gis.utilities.SFSUtilities;
+import org.orbisgis.commons.progress.NullProgressMonitor;
 import org.orbisgis.core_export.MapImageWriter;
 import org.orbisgis.corejdbc.DataManager;
 import org.orbisgis.corejdbc.internal.DataManagerImpl;
 import org.orbisgis.coremap.layerModel.MapContext;
 import org.orbisgis.coremap.layerModel.OwsMapContext;
-import org.orbisgis.coremap.renderer.Renderer;
-import org.orbisgis.progress.NullProgressMonitor;
 import org.osgi.service.jdbc.DataSourceFactory;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.net.URI;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.util.Properties;
 
 /**
  * Do the following things:
- * - Create in-memory database
+ * - Create a H2 database
  * - Open OWS Context
  * - Render then save it in png file.
  * @author Nicolas Fortin
