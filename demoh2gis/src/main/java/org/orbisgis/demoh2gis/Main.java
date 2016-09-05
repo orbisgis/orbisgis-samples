@@ -1,11 +1,10 @@
 package org.orbisgis.demoh2gis;
 
-import org.h2gis.h2spatialext.CreateSpatialExtension;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import org.h2gis.ext.H2GISExtension;
 
 /**
  * Short demo of in memory spatial database.
@@ -19,7 +18,7 @@ public class Main {
                 Statement st = connection.createStatement()) {
                 // Import spatial functions, domains and drivers
                 // If you are using a file database, you have to do only that once.
-                CreateSpatialExtension.initSpatialExtension(connection);
+                H2GISExtension.load(connection);
                 // Create a table
                 st.execute("CREATE TABLE ROADS (the_geom MULTILINESTRING, speed_limit INT)");
                 // Add some roads
